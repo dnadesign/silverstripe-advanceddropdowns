@@ -29,7 +29,7 @@ new AdvancedDropdownField('AdvancedDropdown', 'DropdownField with option attribu
 ));
 ```
 
-## AdvandedGropuedDropdownField
+## AdvandedGroupedDropdownField
 
 Set up your AdvandedGroupedDropdownField's as follows:
 
