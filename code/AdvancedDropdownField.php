@@ -8,15 +8,21 @@ class AdvancedDropdownField extends DropDownField {
 	public function Field($properties = array()) {
 		$source = $this->getSource();
 		$options = array();
+        
+        if ($this->getHasEmptyDefault()) {
+			$selected = ($this->value === '' || $this->value === null);
+			$disabled = (in_array('', $this->disabledItems, true)) ? 'disabled' : false;
+			$empty = $this->getEmptyString();
+			$options[] = new ArrayData(array(
+				'Value' => '',
+				'Title' => $empty['Title'],
+				'Selected' => $selected,
+				'Disabled' => $disabled,
+				'Attributes' => $this->createOptionAttributes($empty)
+			));
+		}
+        
 		if($source) {
-			// SQLMap needs this to add an empty value to the options
-			if(is_object($source) && $this->emptyString) {
-				$options[] = new ArrayData(array(
-					'Value' => '',
-					'Title' => $this->emptyString,
-				));
-			}
-
 			foreach($source as $value => $params) {
 
 
