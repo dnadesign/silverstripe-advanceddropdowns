@@ -25,7 +25,7 @@ class AdvancedDropdownField extends DropdownField {
 			$empty = $this->getEmptyString();
 			$options[] = new ArrayData(array(
 				'Value' => '',
-				'Title' => $empty['Title'],
+				'Title' => $empty,
 				'Selected' => $selected,
 				'Disabled' => $disabled,
 				'Attributes' => $this->createOptionAttributes($empty)
