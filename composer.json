@@ -1,7 +1,7 @@
 {
 	"name": "dnadesign/silverstripe-advanceddropdowns",
 	"description": "DropdownField and GroupedDropdownField that allows the use of data-attributes on each option tag",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"keywords": ["silverstripe", "dropdown", "select"],
 	"license": "BSD-3-Clause",
 	"authors": [
