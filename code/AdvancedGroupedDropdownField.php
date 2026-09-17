@@ -17,10 +17,15 @@ class AdvancedGroupedDropdownField extends GroupedDropdownField
 			if(is_array($params) && !array_key_exists('Title', $params)) {
 				$options .= "<optgroup label=\"$value\">";
 				foreach($params as $value2 => $params2) {
-					$disabled = '';
-                    if ($this->isDisabledValue($value2)) {
-						$disabled = 'disabled="disabled"';
-					}
+                    $disabled = '';
+                    if (
+                        array_key_exists($value, $this->disabledItems)
+                        && is_array($this->disabledItems[$value])
+                        && in_array($value2, $this->disabledItems[$value])
+                    ) {
+                        $disabled = 'disabled="disabled"';
+                    }
+
                     $selected = $this->isSelectedValue($value2, $fieldValue) ? ' selected="selected"' : '';
 					$optionTitle = $params2['Title'];
 					$attributes = $this->createOptionAttributes($params2);
