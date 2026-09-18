@@ -19,9 +19,12 @@ class AdvancedGroupedDropdownField extends GroupedDropdownField
 				foreach($params as $value2 => $params2) {
                     $disabled = '';
                     if (
-                        array_key_exists($value, $this->disabledItems)
-                        && is_array($this->disabledItems[$value])
-                        && in_array($value2, $this->disabledItems[$value])
+                        $this->isDisabledValue($value2)
+                        || (
+                            array_key_exists($value, $this->disabledItems)
+                            && is_array($this->disabledItems[$value])
+                            && in_array($value2, $this->disabledItems[$value])
+                        )
                     ) {
                         $disabled = 'disabled="disabled"';
                     }

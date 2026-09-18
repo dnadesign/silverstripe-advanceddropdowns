@@ -51,6 +51,34 @@ final class AdvancedGroupedDropdownFieldTest extends SapphireTest
             $html
         );
     }
+
+    public function testFlatDisabledItemsInsideOptgroup(): void
+    {
+        $field = new AdvancedGroupedDropdownField(
+            'Country',
+            'Country',
+            [
+                'Countries' => [
+                    'NZ' => ['Title' => 'New Zealand'],
+                    'AU' => ['Title' => 'Australia'],
+                ],
+            ]
+        );
+
+        $field->setDisabledItems(['NZ']);
+
+        $html = (string) $field->Field();
+
+        $this->assertStringContainsString(
+            'value="NZ" disabled="disabled"',
+            $html
+        );
+
+        $this->assertStringNotContainsString(
+            'value="AU" disabled="disabled"',
+            $html
+        );
+    }
 }
 
 class TestableAdvancedGroupedDropdownField extends AdvancedGroupedDropdownField
